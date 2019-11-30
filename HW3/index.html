@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="height:3000px">
+
+  <h2>Кликните на кнопку ниже</h2>
+
+  <input type="button" value="Кликните, чтобы увидеть форму" id="show-button">
+
+
+  <div id="prompt-form-container">
+    <form id="prompt-form">
+      <div id="prompt-message"></div>
+      <input name="text" type="text">
+      <input type="submit" value="Ok">
+      <input type="button" name="cancel" value="Отмена">
+    </form>
+  </div>
+
+
+  <H1>Заполните анкету</H1>
+<FORM NAME="Sel1">
+    <!-- Анкета -->
+    <TABLE>
+        <TR><TD><B>Фамилия:<B></TD>
+            <TD><INPUT NAME="Family" SIZE=20
+                  onBlur="this.value=this.value.toUpperCase()"></TD></TR>
+        <TR><TD><B>Имя:<B></TD>
+            <TD><INPUT NAME="Name" SIZE=20
+                  onBlur="this.value=this.value.toUpperCase()"></TD></TR>
+        <TR><TD><B>Возраст:<B></TD>
+            <TD><INPUT NAME="Age" SIZE=3 VALUE="18"
+                  onBlur="this.value=CheckAge(this.value)"
+                  onFocus="this.select()"></TD></TR>
+        <TR><TD><B>Телефон:<B></TD>
+            <TD><INPUT NAME="Phone" SIZE=10></TD></TR>
+    </TABLE>
+    <!-- Кнопки готовности и сброса -->
+    <INPUT TYPE="button" VALUE="Готово" onClick="Complete();">
+    <INPUT TYPE="reset" VALUE="Сброс">
+</FORM>
+
+
+
+
+  <script src="./main.js"></script>
+
+
+</body>
+</html>
