@@ -1,92 +1,91 @@
-    // Показать полупрозрачный DIV, чтобы затенить страницу
-    // (форма располагается не внутри него, а рядом, потому что она не должна быть полупрозрачной)
-    function showCover() {
-      let coverDiv = document.createElement('div');
-      coverDiv.id = 'cover-div';
+let select = document.getElementById('select');
+let create = document.getElementById('create');
+let spruse = document.getElementById('form-spruse');
+let fern = document.getElementById('form-fern');
+let form = document.getElementById('form');
+let saveButtom = document.getElementById("save");
+let main = document.getElementsByClassName("main")
 
-      // убираем возможность прокрутки страницы во время показа модального окна с формой
-      document.body.style.overflowY = 'hidden';
 
-      document.body.append(coverDiv);
-    }
+//кнопка создать
+create.onclick = function(){show();}
 
-    function hideCover() {
-      document.getElementById('cover-div').remove();
-      document.body.style.overflowY = '';
-    }
+function show(){
+  form.style.display =='none' ? form.style.display ='block' : form.style.display = 'none';/* 
+  if(form.style.display =='none') {
+    form.style.display ='block';
+  } else{
+    form.style.display = 'none';
+  } */
+};
 
-    function showPrompt(text, callback) {
-      showCover();
-      let form = document.getElementById('prompt-form');
-      let container = document.getElementById('prompt-form-container');
-      document.getElementById('prompt-message').innerHTML = text;
-      form.text.value = '';
 
-      function complete(value) {
-        hideCover();
-        container.style.display = 'none';
-        document.onkeydown = null;
-        callback(value);
+// выбираем селектор (ель,папоротник)
+function Selected(number) {
+    let selecttor = number.value;
+      if (selecttor==1) {
+        spruse.style.display='block';
+        fern.style.display='none';
+      } else if (selecttor==2) {
+        spruse.style.display='none';
+        fern.style.display='block';
       }
+};
 
-      form.onsubmit = function() {
-        let value = form.text.value;
-        if (value == '') return false; // игнорируем отправку пустой формы
-
-        complete(value);
-        return false;
-      };
-
-      form.cancel.onclick = function() {
-        complete(null);
-      };
-
-      document.onkeydown = function(e) {
-        if (e.key == 'Escape') {
-          complete(null);
-        }
-      };
-
-      let lastElem = form.elements[form.elements.length - 1];
-      let firstElem = form.elements[0];
-
-      lastElem.onkeydown = function(e) {
-        if (e.key == 'Tab' && !e.shiftKey) {
-          firstElem.focus();
-          return false;
-        }
-      };
-
-      firstElem.onkeydown = function(e) {
-        if (e.key == 'Tab' && e.shiftKey) {
-          lastElem.focus();
-          return false;
-        }
-      };
-
-      container.style.display = 'block';
-      form.elements.text.focus();
+//pзаносим данные выбранных checkbox в input
+var inputs = Array.prototype.slice.call(document.getElementsByClassName("checkbox")),
+    inp = document.querySelector("#inp");
+inputs.forEach(function (c) {
+    c.onclick = function () {
+        var a = [];
+        inputs.forEach(function (b) {
+            b.checked && a.push(b.value)
+        });
+        inp.value = a
     }
+});
 
-    document.getElementById('show-button').onclick = function() {
-      showPrompt("Введите что-нибудь<br>...умное :)", function(value) {
-        alert("Вы ввели: " + value);
-      });
-    };
+//создание таблицы
+function insertRow(id) {
+  let tbody = document.getElementById(id).getElementsByTagName("tbody")[0];
+  let row = document.createElement("tr");
+  let td1 = document.createElement("td");
+    td1.appendChild(document.createTextNode(document.getElementById("name").value));
+  let td2 = document.createElement("td")
+    td2.appendChild(check1 = document.createElement("input"))
+    check1.type = "checkbox"
+    check1.checked = "true"
+    check1.disabled = "true";
+    td2.appendChild(document.createTextNode(document.getElementById("inp").value))
+  let td3 = document.createElement("td")
+    td3.appendChild(document.createTextNode(document.getElementById("description").value))
+  let td4 = document.createElement("td")
+    td4.appendChild(document.createTextNode(document.getElementById("age").value))
+  let td5 = document.createElement("td")
+    td5.appendChild(document.createTextNode(document.getElementById("area").value))
+  let td6 = document.createElement("td")
+    td6.appendChild(document.createTextNode(document.getElementById("growth").value))
+  let td7 = document.createElement("td")
+    td7.appendChild(button = document.createElement("input"))
+      button.type = "button";
+      button.value = "ИЗМЕНИТЬ";
+    td7.appendChild(button2 = document.createElement("input"))
+      button2.type = "button";
+      button2.value = "УДАЛИТЬ";    
+    
+  row.appendChild(td1);
+  row.appendChild(td2);
+  row.appendChild(td3);
+  row.appendChild(td4);
+  row.appendChild(td5);
+  row.appendChild(td6);
+  row.appendChild(td7)
+  tbody.appendChild(row);
+}
 
 
-    function Complete()
-        {
-            var Elem="Фамилия: " + document.Sel1.Family.value +
-                "\nИмя: " + document.Sel1.Name.value +
-                "\nВозраст: " + document.Sel1.Age.value +
-                "\nТелефон: " + document.Sel1.Phone.value;
-            alert(Elem);
-        }
-        function CheckAge(age)
-        {
-            if(age<18)
-                return "18";
-            else
-                return  age;
-        }
+// сохранение не работает
+saveButtom.addEventListener('click',function(){
+  localStorage.setItem('form',main.innerHTML );
+});
+

@@ -6,50 +6,91 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="height:3000px">
+<body>
+  <input id="create" type="button" value="СОЗДАТЬ">
+  <form id="form">
+    <select id="select"  name="select" aria-required="true" onChange="Selected(this)">
+      <option selected disabled>Выберите класс растения</option>
+      <option value="1">Папоротник</option>
+      <option value="2">Ель обыкновенная</option>
+    </select>
 
-  <h2>Кликните на кнопку ниже</h2>
-
-  <input type="button" value="Кликните, чтобы увидеть форму" id="show-button">
-
-
-  <div id="prompt-form-container">
-    <form id="prompt-form">
-      <div id="prompt-message"></div>
-      <input name="text" type="text">
-      <input type="submit" value="Ok">
-      <input type="button" name="cancel" value="Отмена">
+      <div id="form-spruse">
+        <div class="table2">
+              <ul class="ul">
+                  <li>название</li>
+                  <li>применение</li>
+                  <li>описание</li>
+                  <li>возраст</li>
+                  <li>где растет</li>
+              </ul>
+              <div class="main">
+                  <div> <input type="text" id="name" placeholder="название"></div>         
+                  <div class="checkboxBar">
+                      <input type="checkbox" class="checkbox" value="производство бумаги"><p>производство бумаги</p>
+                      <input type="checkbox" class="checkbox" value="заготовка дров"><p>заготовка дров</p>
+                      <input type="checkbox" class="checkbox" value="строительство"><p>строительство</p>
+                      <input type="text" id="inp">
+                  </div>          
+                  <div><input type="text" id="description" placeholder="описание"></div>
+                  <div><input type="text" id="age" placeholder="возраст"></div>
+                  <div><input type="text" id="area" placeholder="ареал произрастания"></div>
+                  <button type="button" onclick="insertRow('myTable2');return false;">Add</button>
+                </div>
+          <table id="myTable2" cellspacing="0" class ="demotable2">
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="form-fern">
+        <div class="table">
+            <ul class="ul">
+                <li>название</li>
+                <li>применение</li>
+                <li>описание</li>
+                <li>возраст</li>
+                <li>где растет</li>
+                <li>класс</li>
+            </ul>
+        <div class="main">
+          <div> <input type="text" id="name" placeholder="название"></div>         
+          <div class="checkboxBar">
+              <input type="checkbox" class="checkbox" value="производство бумаги"><p>производство бумаги</p>
+              <input type="checkbox" class="checkbox" value="заготовка дров"><p>заготовка дров</p>
+              <input type="checkbox" class="checkbox" value="строительство"><p>строительство</p>
+              <input type="text" id="inp">
+          </div>          
+          <div><input type="text" id="description" placeholder="описание"></div>
+          <div><input type="text" id="age" placeholder="возраст"></div>
+          <div><input type="text" id="area" placeholder="ареал произрастания"></div>
+          <div><input type="text" id="growth" placeholder="класс"></div>
+          <button type="button" onclick="insertRow('myTable');return false;">Add</button>
+        </div>
+        <table id="myTable" cellspacing="0" class ="demotable">
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <button id="save">Save</button>   
     </form>
-  </div>
-
-
-  <H1>Заполните анкету</H1>
-<FORM NAME="Sel1">
-    <!-- Анкета -->
-    <TABLE>
-        <TR><TD><B>Фамилия:<B></TD>
-            <TD><INPUT NAME="Family" SIZE=20
-                  onBlur="this.value=this.value.toUpperCase()"></TD></TR>
-        <TR><TD><B>Имя:<B></TD>
-            <TD><INPUT NAME="Name" SIZE=20
-                  onBlur="this.value=this.value.toUpperCase()"></TD></TR>
-        <TR><TD><B>Возраст:<B></TD>
-            <TD><INPUT NAME="Age" SIZE=3 VALUE="18"
-                  onBlur="this.value=CheckAge(this.value)"
-                  onFocus="this.select()"></TD></TR>
-        <TR><TD><B>Телефон:<B></TD>
-            <TD><INPUT NAME="Phone" SIZE=10></TD></TR>
-    </TABLE>
-    <!-- Кнопки готовности и сброса -->
-    <INPUT TYPE="button" VALUE="Готово" onClick="Complete();">
-    <INPUT TYPE="reset" VALUE="Сброс">
-</FORM>
-
-
-
-
+    
   <script src="./main.js"></script>
 
 
 </body>
 </html>
+
+<!-- 
+  <p onclick="test.innerHTML='fdfdfdfdf'">Click me</p>
+  <table>
+      <tr>
+      
+      <td id='test'>
+      Тут сообщение которое будет выводиться по default'у
+      </td>
+      
+      </tr>
+    </table>
+ -->

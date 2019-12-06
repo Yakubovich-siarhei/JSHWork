@@ -1,53 +1,68 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
 
-#prompt-form {
-  display: inline-block;
-  padding: 5px 5px 5px 70px;
-  width: 200px;
-  border: 1px solid black;
-  background: white url(https://en.js.cx/clipart/prompt.png) no-repeat left 5px;
-  vertical-align: middle;
-}
-
-#prompt-form-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
+#form,
+#form-fern,
+#form-spruse {
   display: none;
-  width: 100%;
-  height: 100%;
-  text-align: center;
+}  
+
+td {
+  border: 1px solid black;
 }
 
-#prompt-form-container:before {
-  display: inline-block;
-  height: 100%;
-  content: '';
+.demotable {
+  border-collapse: collapse;
+  counter-reset: schetchik;  
+  /* счётчик с названием "schetchik" работает в рамках класса .demotable */ 
+}
+.demotable tr {
+  counter-increment: schetchik;  
+  /* при встрече тега tr счётчик с названием "schetchik" увеличивается на единицу */ 
+}
+.demotable td,
+.demotable tr:before {
+  padding: .1em .5em;
+  border: 1px solid #E7D5C0;
+}
+.demotable tr:before {
+  content: counter(schetchik);  
+  /* значение счётчика с названием "schetchik" записывается в первую клетку строки */ 
+  display: table-cell;
   vertical-align: middle;
+  color: #978777;
 }
 
-#cover-div {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9000;
+.ul {
+  display: flex;
+  list-style-type: none;
   width: 100%;
-  height: 100%;
-  background-color: gray;
-  opacity: 0.3;
 }
 
-#prompt-form input[name="text"] {
-  display: block;
-  margin: 5px;
-  width: 180px;
+#inp {
+  display: none;
 }
 
 
+.checkboxBar {
+  display: flex;
+}
+
+.main,
+.main2 {
+  width: 800px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.table2 ul,
+.table ul {
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.table2 ul li:nth-child(2),
+.table ul li:nth-child(2)  {
+  width: 30%;
+}

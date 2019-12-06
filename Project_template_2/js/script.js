@@ -29,6 +29,7 @@ text.addEventListener("keypress",function(keyPressed){
     ul.innerHTML+='<li>'+'<span><i class="fas fa-trash-alt"></i></span>'+newTodo+" "
       +timer2+'</li>';
     //как запустить таймер внутри li ?
+    showRemaining();
     deleteTodo();
     }
     
