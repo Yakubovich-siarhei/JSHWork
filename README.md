@@ -1,1 +1,1 @@
-https://yakubovich-siarhei.github.io/JSHWork/.
+https://yakubovich-siarhei.github.io/JSHWork/HW3
